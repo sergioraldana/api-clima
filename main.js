@@ -1,7 +1,7 @@
-const { app, BrowserWindow } = require('electron')
-
+const { ipcMain, app, BrowserWindow } = require('electron')
+let win;
 function createWindow () {
-  const win = new BrowserWindow({
+   win = new BrowserWindow({
     width: 600,
     height: 600,
     webPreferences: {
@@ -26,3 +26,11 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+ipcMain.on('agrandar',(event) =>{
+  win.setSize(900,600)
+});
+
+ipcMain.on('disminuir',(event) =>{
+  win.setSize(600,600)
+});
